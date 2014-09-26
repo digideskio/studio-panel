@@ -1,0 +1,10 @@
+*.sublime-project
+*.sublime-workspace
+
+*.pyc
+
+venv/*
+studio-panel/application/static/thumbnails/*
+studio-panel/config.py
+
+studio-panel/application/static/files/*

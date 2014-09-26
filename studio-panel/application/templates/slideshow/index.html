@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block header %}
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/jquery.countdown.css')}}"> 
+{% endblock %}
+
+{% block body %}
+<div id="defaultCountdown"></div>
+{% endblock %}
+
+
+{% block footer_scripts %}
+	<script src="{{url_for('static', filename='assets/js/jquery.backstretch.min.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/jquery.plugin.min.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/jquery.countdown.min.js')}}"></script>
+	<script>
+		//$("#countdown").datepick({minDate: new Date(2014, 12-1, 25)});
+		$(function () {
+			var austDay = new Date(2014, 08, 19, 18, 00, 00)
+
+			//austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+			$('#defaultCountdown').countdown({until: austDay});
+			//$('#year').text(austDay.getFullYear());
+		});
+		$.backstretch([
+			{% for image in images %}
+				"{{url_for('static', filename=image|thumbnail('1024x1024'))}}",
+			{% endfor %}
+		], {
+				fade: 750,
+				duration: 10000
+		});
+	</script>
+{% endblock %}
